@@ -22,24 +22,39 @@ namespace WindowsFormsApp1
             if (textBox1.Text.Length != 0 && textBox2.Text.Length != 0)
             {
                 double a ,b,c,d;
-                string num1 = textBox1.Text;
-                string num2 = textBox2.Text;
+                string num1 = textBox1.Text.Trim();
+                string num2 = textBox2.Text.Trim();
 
                 string[] num1plus = num1.Split('+');
                 string[] num1minus = num1.Split('-');
                 if(num1plus.Length>1)
                 {
-                    a = int.Parse(num1plus[0]);
+                    
+                    a = double.Parse(num1plus[0]);
                     string bvalue = num1plus[1];
                     string[] secondPart = bvalue.Split('i');
-                    b = int.Parse(secondPart[0]);
+                    b = double.Parse(secondPart[0]);
                 }
                 else
                 {
-                    a = int.Parse(num1minus[0]);
-                    string bvalue = num1minus[1];
-                    string[] secondPart = bvalue.Split('i');
-                    b = int.Parse(secondPart[0]);
+                    if(num1minus.Length==3) {
+                        a = int.Parse(num1minus[1]);
+                        a = a * -1;
+                        string bvalue = num1minus[2];
+                        string[] secondPart = bvalue.Split('i');
+                        b = double.Parse(secondPart[0]);
+                        b = b * -1;
+                    }
+                    else
+                    {
+                        a = int.Parse(num1minus[0]);
+                        
+                        string bvalue = num1minus[1];
+                        string[] secondPart = bvalue.Split('i');
+                        b = double.Parse(secondPart[0]);
+                        b = b * -1;
+                    }
+                   
                 }
 
                 string[] num2plus = num2.Split('+');
@@ -49,21 +64,119 @@ namespace WindowsFormsApp1
                     c = int.Parse(num2plus[0]);
                     string bvalue = num2plus[1];
                     string[] secondPart = bvalue.Split('i');
-                    d = int.Parse(secondPart[0]);
+                    d = double.Parse(secondPart[0]);
                 }
                 else
                 {
-                    c = int.Parse(num2minus[0]);
-                    string bvalue = num2minus[1];
-                    string[] secondPart = bvalue.Split('i');
-                    d = int.Parse(secondPart[0]);
+                    if (num2minus.Length == 3)
+                    {
+                        c = double.Parse(num2minus[1]);
+                        c = c * -1;
+                        string bvalue = num2minus[2];
+                        string[] secondPart = bvalue.Split('i');
+                        d = double.Parse(secondPart[0]);
+                        d = d * -1;
+                    }
+                    else
+                    {
+                        c = double.Parse(num2minus[0]);
+                        string bvalue = num2minus[1];
+                        string[] secondPart = bvalue.Split('i');
+                        d = double.Parse(secondPart[0]);
+                        d = d * -1;
+                    }
+                    
                 }
-                double realSum = a + b;
-                double imagniarySum = c + d;
+                double realSum = a + c;
+                double imagniarySum = b + d;
+                string sign = "+";
+                
+                string result= realSum.ToString() + sign + imagniarySum.ToString()+"i";
+                textBox3.Text = result;
+               
+            }
+        }
+        // this is the negative button
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text.Length != 0 && textBox2.Text.Length != 0)
+            {
+                double a, b, c, d;
+                string num1 = textBox1.Text.Trim();
+                string num2 = textBox2.Text.Trim();
 
-                MessageBox.Show(realSum.ToString());
+                string[] num1plus = num1.Split('+');
+                string[] num1minus = num1.Split('-');
+                if (num1plus.Length > 1)
+                {
 
-                MessageBox.Show(imagniarySum.ToString());
+                    a = double.Parse(num1plus[0]);
+                    string bvalue = num1plus[1];
+                    string[] secondPart = bvalue.Split('i');
+                    b = double.Parse(secondPart[0]);
+                }
+                else
+                {
+                    if (num1minus.Length == 3)
+                    {
+                        a = int.Parse(num1minus[1]);
+                        a = a * -1;
+                        string bvalue = num1minus[2];
+                        string[] secondPart = bvalue.Split('i');
+                        b = double.Parse(secondPart[0]);
+                        b = b * -1;
+                    }
+                    else
+                    {
+                        a = int.Parse(num1minus[0]);
+
+                        string bvalue = num1minus[1];
+                        string[] secondPart = bvalue.Split('i');
+                        b = double.Parse(secondPart[0]);
+                        b = b * -1;
+                    }
+
+                }
+
+                string[] num2plus = num2.Split('+');
+                string[] num2minus = num2.Split('-');
+                if (num2plus.Length > 1)
+                {
+                    c = int.Parse(num2plus[0]);
+                    string bvalue = num2plus[1];
+                    string[] secondPart = bvalue.Split('i');
+                    d = double.Parse(secondPart[0]);
+                }
+                else
+                {
+                    if (num2minus.Length == 3)
+                    {
+                        c = double.Parse(num2minus[1]);
+                        c = c * -1;
+                        string bvalue = num2minus[2];
+                        string[] secondPart = bvalue.Split('i');
+                        d = double.Parse(secondPart[0]);
+                        d = d * -1;
+                    }
+                    else
+                    {
+                        c = double.Parse(num2minus[0]);
+                        string bvalue = num2minus[1];
+                        string[] secondPart = bvalue.Split('i');
+                        d = double.Parse(secondPart[0]);
+                        d = d * -1;
+                    }
+
+                }
+                double realSum = a - c;
+                double imagniarySum = b - d;
+                string sign = "+";
+                
+                string result = realSum.ToString() + sign + imagniarySum.ToString() + "i";
+                textBox3.Text = result;
+
+
+
 
 
             }
