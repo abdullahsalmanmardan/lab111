@@ -16,5 +16,57 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text.Length != 0 && textBox2.Text.Length != 0)
+            {
+                double a ,b,c,d;
+                string num1 = textBox1.Text;
+                string num2 = textBox2.Text;
+
+                string[] num1plus = num1.Split('+');
+                string[] num1minus = num1.Split('-');
+                if(num1plus.Length>1)
+                {
+                    a = int.Parse(num1plus[0]);
+                    string bvalue = num1plus[1];
+                    string[] secondPart = bvalue.Split('i');
+                    b = int.Parse(secondPart[0]);
+                }
+                else
+                {
+                    a = int.Parse(num1minus[0]);
+                    string bvalue = num1minus[1];
+                    string[] secondPart = bvalue.Split('i');
+                    b = int.Parse(secondPart[0]);
+                }
+
+                string[] num2plus = num2.Split('+');
+                string[] num2minus = num2.Split('-');
+                if (num2plus.Length > 1)
+                {
+                    c = int.Parse(num2plus[0]);
+                    string bvalue = num2plus[1];
+                    string[] secondPart = bvalue.Split('i');
+                    d = int.Parse(secondPart[0]);
+                }
+                else
+                {
+                    c = int.Parse(num2minus[0]);
+                    string bvalue = num2minus[1];
+                    string[] secondPart = bvalue.Split('i');
+                    d = int.Parse(secondPart[0]);
+                }
+                double realSum = a + b;
+                double imagniarySum = c + d;
+
+                MessageBox.Show(realSum.ToString());
+
+                MessageBox.Show(imagniarySum.ToString());
+
+
+            }
+        }
     }
 }

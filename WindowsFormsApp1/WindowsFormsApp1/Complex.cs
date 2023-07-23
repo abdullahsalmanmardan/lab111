@@ -23,6 +23,8 @@ namespace WindowsFormsApp1
         public Complex sub(Complex num1, Complex num2)
         {
             Complex diff = new Complex();
+            diff.RealPart = num1.RealPart - num2.RealPart;
+            diff.ImaginaryPart = num1.ImaginaryPart - num2.ImaginaryPart;
             return diff;
         }
     }
